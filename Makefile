@@ -13,7 +13,7 @@ _OBJ = date.o main.o trainProg.o write.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c $(DEPS)
-	# $(MKDIR_P) $(ODIR)
+	$(MKDIR_P) $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 autoFTO: $(OBJ)
