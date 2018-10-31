@@ -1,6 +1,7 @@
 IDIR =../include
 CC=gcc
 CFLAGS=-I$(IDIR)
+MKDIR_P=mkdir -p
 
 ODIR=obj
 
@@ -11,6 +12,7 @@ _OBJ = date.o main.o trainProg.o write.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c $(DEPS)
+	$(MKDIR_P) $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 autoFTO: $(OBJ)
