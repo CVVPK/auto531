@@ -1,9 +1,10 @@
-IDIR =../include
+VPATH=src
+IDIR =./include
 CC=gcc
 CFLAGS=-I$(IDIR)
 MKDIR_P=mkdir -p
 
-ODIR=obj
+ODIR=src/obj
 
 _DEPS = date.h trainProg.h write.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
@@ -12,7 +13,7 @@ _OBJ = date.o main.o trainProg.o write.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c $(DEPS)
-	$(MKDIR_P) $(ODIR)
+	# $(MKDIR_P) $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 autoFTO: $(OBJ)
