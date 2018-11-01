@@ -14,7 +14,7 @@ void writeLift(int warmUp, int week, int sets[], FILE *fp)
 void writeFile(int week, int cycle, char lift[], int tMax, int warmUp[], int sets[])
 {
     FILE *fp;
-    fp = fopen("liftTomorrow.txt", "w");
+    fp = fopen("./script/lift.txt", "w");
     fprintf(fp, "Subject: 5/3/1 %s Week: %d Cycle: %d\n\n", lift, week, cycle);
     fprintf(fp, "%s -- TMAX: %d lbs\n", lift, tMax);
     fprintf(fp, "Warm Up:\n");
