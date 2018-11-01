@@ -27,24 +27,31 @@ Lift getLift(int day, int weekNum)
     return r;
 }
 
-// Returns the corresponding reps for the workout based on the week and number "i" of set. You should pass warmUp = 0 if work set | warmUp = 1 if warm up set
-int getReps(int week, int i, int warmUp)
+// Returns the number of cycles the given weeks
+// Assumes even is the number of weeks in odd cycles and odd number of weeks in even cycles
+int *getWeekCycle(int weeks, int odd, int even, int cycle)
 {
-    int reps;
-    reps = 5;
-    if (week == 2 && !warmUp)
+    static int r[2];
+    if (weeks > 0)
     {
-        reps = 3;
+        // Even weeks -cB (expected 4)
+        if (cycle % 2 == 0)
+        {
+            getWeekCycle(weeks - even, odd, even, ++cycle);
+        }
+
+        // Odd weeks -cA (expected 3)
+        else
+        {
+            getWeekCycle(weeks - odd, odd, even, ++cycle);
+        }
     }
-    else if (week == 3 && !warmUp)
+    else
     {
-        reps = 5 - (i * 2);
+        r[0] = cycle - 1;
+        r[1] = r[0] % 2 ? 3 + weeks : 4 + weeks;
+        return r;
     }
-    else if (warmUp && i == 2)
-    {
-        reps = 3;
-    }
-    return reps;
 }
 
 // Returns an integer rounded to the nearest toNext

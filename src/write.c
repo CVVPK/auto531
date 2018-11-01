@@ -25,29 +25,22 @@ void writeFile(int week, int cycle, char lift[], int tMax, int warmUp[], int set
     fclose(fp);
 }
 
-// Returns the number of cycles the given weeks
-// Assumes even is the number of weeks in odd cycles and odd number of weeks in even cycles
-int *getWeekCycle(int weeks, int odd, int even, int cycle)
+// Returns the corresponding reps for the workout based on the week and number "i" of set. You should pass warmUp = 0 if work set | warmUp = 1 if warm up set
+int getReps(int week, int i, int warmUp)
 {
-    static int r[2];
-    if (weeks > 0)
+    int reps;
+    reps = 5;
+    if (week == 2 && !warmUp)
     {
-        // Even weeks -cB (expected 4)
-        if (cycle % 2 == 0)
-        {
-            getWeekCycle(weeks - even, odd, even, ++cycle);
-        }
-
-        // Odd weeks -cA (expected 3)
-        else
-        {
-            getWeekCycle(weeks - odd, odd, even, ++cycle);
-        }
+        reps = 3;
     }
-    else
+    else if (week == 3 && !warmUp)
     {
-        r[0] = cycle - 1;
-        r[1] = r[0] % 2 ? 3 + weeks : 4 + weeks;
-        return r;
+        reps = 5 - (i * 2);
     }
+    else if (warmUp && i == 2)
+    {
+        reps = 3;
+    }
+    return reps;
 }
