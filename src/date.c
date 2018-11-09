@@ -13,7 +13,7 @@ long int getDate(int day, int month, int year)
     timeinfo->tm_mon = month - 1;
     timeinfo->tm_sec = 0;
     timeinfo->tm_min = 0;
-    timeinfo->tm_hour = 0;
+    timeinfo->tm_hour = 2;
     return mktime(timeinfo);
 }
 

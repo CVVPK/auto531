@@ -6,7 +6,7 @@
 #define BENCHTMAX 115
 #define PRESSTMAX 75
 #define DELOADWEEK 4
-#define START 1537156800 // 5/3/1 Starting point in seconds as returned by getDate(17,9,2018) equivalent to Sept 17 2018 00:00:00
+#define START 1537081200 // 5/3/1 Starting date -1 day in seconds as returned by getDate(16,9,2018) equivalent to Sept 16 2018 00:02:00 2am because DST fucks things up
 
 typedef struct lift
 {

@@ -15,7 +15,13 @@ int main()
     int current = time(&rawtime);
     date = localtime(&rawtime);
     todayLift = getLift(date->tm_wday + 1, getWeek(current, START));
+    // GET WHOLE WEEK ALSO CHANGE WRITE.C TO APPEND FILE, FIX LATER
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     todayLift = getLift(i + 1, getWeek(current, START));
+    //     writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets);
+    // }
     writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets);
-
+    // printf("%ld", getDate(16, 9, 2018));
     return 0;
 }
