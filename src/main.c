@@ -14,19 +14,19 @@ int main(int argc, char *argv[])
     struct tm *date;
     int current = time(&rawtime);
     date = localtime(&rawtime);
-    printf("%c", argv[1][0]);
+    // printf("%d", argc == 1);
     if (argc == 1)
     {
         todayLift = getLift(date->tm_wday + 1, getWeek(current, START));
-        writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets, argv); // **
+        writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets, '\0'); // **
     }
-    // GET WHOLE WEEK ALSO CHANGE WRITE.C TO APPEND FILE, FIX LATER
+    // // GET WHOLE WEEK ALSO CHANGE WRITE.C TO APPEND FILE, FIX LATER
     else if (argv[1][0] == 'w')
     {
         for (int i = 1; i < 5; i++)
         {
             todayLift = getLift(i, getWeek(current, START));
-            writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets, argv);
+            writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets, argv[1][0]);
         }
     }
 
