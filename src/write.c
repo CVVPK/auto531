@@ -11,10 +11,12 @@ void writeLift(int warmUp, int week, int sets[], FILE *fp)
 }
 
 // Creates output file and writes to it
-void writeFile(int week, int cycle, char lift[], int tMax, int warmUp[], int sets[])
+void writeFile(int week, int cycle, char lift[], int tMax, int warmUp[], int sets[], char *argv[])
 {
     FILE *fp;
-    fp = fopen("./script/lift.txt", "w");
+    char oneLift[20] = "./script/lift.txt";
+    char weekLift[20] = "./script/week.txt";
+    fp = fopen(argv[1][0] == 'w' ? weekLift : oneLift, argv[1][0] == 'w' ? "a" : "w");
     fprintf(fp, "Subject: 5/3/1 %s Week: %d Cycle: %d\n\n", lift, week, cycle);
     fprintf(fp, "%s -- TMAX: %d lbs\n", lift, tMax);
     fprintf(fp, "Warm Up:\n");
@@ -22,6 +24,7 @@ void writeFile(int week, int cycle, char lift[], int tMax, int warmUp[], int set
     fprintf(fp, "\n");
     fprintf(fp, "Work Sets:\n");
     writeLift(0, week, sets, fp);
+    fprintf(fp, "\n");
     fclose(fp);
 }
 

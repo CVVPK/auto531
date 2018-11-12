@@ -7,21 +7,29 @@
 #include "write.h"
 #include "date.h"
 
-int main()
+int main(int argc, char *argv[])
 {
     Lift todayLift; // Actually tomorrowLift because date->tm_wday +1
     time_t rawtime;
     struct tm *date;
     int current = time(&rawtime);
     date = localtime(&rawtime);
-    todayLift = getLift(date->tm_wday + 1, getWeek(current, START));
+    printf("%c", argv[1][0]);
+    if (argc == 1)
+    {
+        todayLift = getLift(date->tm_wday + 1, getWeek(current, START));
+        writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets, argv); // **
+    }
     // GET WHOLE WEEK ALSO CHANGE WRITE.C TO APPEND FILE, FIX LATER
-    // for (int i = 0; i < 5; i++)
-    // {
-    //     todayLift = getLift(i + 1, getWeek(current, START));
-    //     writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets);
-    // }
-    writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets);
+    else if (argv[1][0] == 'w')
+    {
+        for (int i = 1; i < 5; i++)
+        {
+            todayLift = getLift(i, getWeek(current, START));
+            writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets, argv);
+        }
+    }
+
     // printf("%ld", getDate(16, 9, 2018));
     return 0;
 }
