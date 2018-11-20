@@ -1,7 +1,7 @@
 #include "write.h"
 
 // Writes a formatted version of sets[] to file fp
-void writeLift(int warmUp, int week, int sets[])
+void getSets(int warmUp, int week, int sets[])
 {
     int i;
     for (i = 0; i < 3; i++)
@@ -11,16 +11,16 @@ void writeLift(int warmUp, int week, int sets[])
 }
 
 // Creates output file and writes to it
-void writeFile(int week, int cycle, char lift[], int tMax, int warmUp[], int sets[], char argv)
+void getSession(int week, int cycle, char lift[], int tMax, int warmUp[], int sets[])
 {
 
     printf("%s -- TMAX: %d lbs\n", lift, tMax);
     printf("Week: %d Cycle: %d\n\n", week, cycle);
     printf("Warm Up:\n");
-    writeLift(1, week, warmUp);
+    getSets(1, week, warmUp);
     printf("\n");
     printf("Work Sets:\n");
-    writeLift(0, week, sets);
+    getSets(0, week, sets);
     printf("\n");
     printf("=====================\n");
 }

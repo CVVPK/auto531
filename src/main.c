@@ -18,14 +18,14 @@ int main(int argc, char *argv[])
     if (argc == 1)
     {
         todayLift = getLift(date->tm_wday + 1, getWeek(current, START));
-        writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets, '\0'); // **
+        getSession(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets); // **
     }
     else if (argv[1][0] == 'w')
     {
         for (int i = 1; i < 5; i++)
         {
             todayLift = getLift(i, getWeek(current, START));
-            writeFile(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets, argv[1][0]);
+            getSession(todayLift.week, todayLift.cycle, todayLift.lift, todayLift.tMax, todayLift.warmUp, todayLift.sets);
         }
     }
 
