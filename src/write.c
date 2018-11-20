@@ -13,7 +13,7 @@ void getSets(int warmUp, int week, int sets[])
 // Creates output file and writes to it
 void getSession(int week, int cycle, char lift[], int tMax, int warmUp[], int sets[])
 {
-
+    printf("\n");
     printf("%s -- TMAX: %d lbs\n", lift, tMax);
     printf("Week: %d Cycle: %d\n\n", week, cycle);
     printf("Warm Up:\n");

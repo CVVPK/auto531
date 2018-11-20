@@ -1,5 +1,5 @@
 /*
-    This program is used to automate the process of calculating the main lifts for the 5/3/1 training program. It outputs the planned warm up and work sets to a file named liftTomorrow.txt to be used as a template for an automated email the day before the planned lift. It requires to set the starting date of the program and starting training maxes (90% of actual 1RM as described in the book) for all 4 lifts.
+    This program is used to automate the process of calculating the main lifts for the 5/3/1 training program. It outputs the planned warm up and work sets to stdout. It requires to set the starting date of the program and starting training maxes (90% of actual 1RM as described in the book) for all 4 lifts.
 */
 
 #include <stdio.h>
