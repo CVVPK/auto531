@@ -13,9 +13,9 @@ void writeLift(int warmUp, int week, int sets[], FILE *fp)
 // Creates output file and writes to it
 void writeFile(int week, int cycle, char lift[], int tMax, int warmUp[], int sets[], char argv)
 {
-    FILE *fp;
-    char oneLift[20] = "./script/lift.txt";
-    char weekLift[20] = "./script/week.txt";
+    FILE *fp = NULL;
+    char oneLift[20] = "./script/lift";
+    char weekLift[20] = "./script/week";
     fp = fopen((argv == 'w' ? weekLift : oneLift), (argv == 'w' ? "a" : "w"));
     fprintf(fp, "Subject: 5/3/1 %s Week: %d Cycle: %d\n\n", lift, week, cycle);
     fprintf(fp, "%s -- TMAX: %d lbs\n", lift, tMax);
@@ -27,7 +27,12 @@ void writeFile(int week, int cycle, char lift[], int tMax, int warmUp[], int set
     fprintf(fp, "\n");
     fclose(fp);
 }
-
+void cleanWeek(void)
+{
+    FILE *fp = NULL;
+    fp = fopen("./script/week", "w");
+    fclose(fp);
+}
 // Returns the corresponding reps for the workout based on the week and number "i" of set. You should pass warmUp = 0 if work set | warmUp = 1 if warm up set
 int getReps(int week, int i, int warmUp)
 {

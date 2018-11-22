@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
     // // GET WHOLE WEEK ALSO CHANGE WRITE.C TO APPEND FILE, FIX LATER
     else if (argv[1][0] == 'w')
     {
+        cleanWeek();
         for (int i = 1; i < 5; i++)
         {
             todayLift = getLift(i, getWeek(current, START));
